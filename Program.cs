@@ -95,10 +95,10 @@ namespace example1
             var subquery =from part1 in sub group new { part1.IndicatorName, part1.value, part1.Countrycode } by part1.countryname into countrygroup select countrygroup;
             foreach (var a in subquery)
             {
-                sw3.WriteLine("{\t\"Country\" : \"" + a.Key + "\",");
+                sw3.WriteLine("{\n\"Country\" : \"" + a.Key + "\",");
                 string temp = "";
                 foreach (var b in a)
-                    temp = temp + "\t\"" + b.IndicatorName + "\" : \"" + b.value + "\",";
+                    temp = temp + "\"" + b.IndicatorName + "\" : \"" + b.value + "\",";
                 temp = temp.Remove(temp.Length - 1);
                 sw3.WriteLine(temp+"\n"+(a.Key == "Yemen, Rep."?"}":"},"));
             }
